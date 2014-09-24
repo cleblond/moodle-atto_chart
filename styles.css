@@ -1,6 +1,6 @@
-.eo_spreadsheet {
+.eo_chart {
 width: 128px;
 height: 128px;
-background-image:url([[pix:atto_spreadsheet|spreadsheet-icon]]);
+background-image:url([[pix:atto_chart|chart-icon]]);
 display:block
 }

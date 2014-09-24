@@ -1,3 +1,5 @@
+YUI.add('moodle-atto_chart-button', function (Y, NAME) {
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -244,3 +246,6 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
         }
     }
 });
+
+
+}, '@VERSION@', {"requires": ["moodle-editor_atto-plugin", "datatype-date"]});

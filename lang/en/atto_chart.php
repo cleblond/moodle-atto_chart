@@ -31,5 +31,5 @@ $string['nothingtoinsert'] = 'Nothing to insert!';
 $string['dialogtitle'] = 'Insert chart';
 $string['insert'] = 'Insert';
 $string['cancel'] = 'Cancel';
-$string['enterflavor'] = 'Choose Options';
+$string['enterflavor'] = 'Chart Type';
 $string['defaultflavor'] = 'Default Ice Cream Flavor';

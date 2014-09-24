@@ -29,18 +29,51 @@ if (!isset($CFG)) {
 global $CFG, $DB, $USER;
 require_once($CFG->libdir . '/filelib.php');
 
-$groupmode  = optional_param('groupmode', 0, PARAM_INT);
+$type  = optional_param('type', 0, PARAM_ALPHA);
+$title  = optional_param('title', 0, PARAM_TEXT);
+$xaxistitle = optional_param('xaxistitle', 0, PARAM_TEXT);
+$yaxistitle = optional_param('yaxistitle', 0, PARAM_TEXT);
+
 $readonlymode  = optional_param('readonly', 'true', PARAM_TEXT);
 
-$id = time();
+//$id = time();
 
 $record = new stdClass();
-$record->sheetid = $id;
+//$record->id = $id;
 $record->userid = $USER->id;
+$record->type = $type;
+$record->title = $title;
+$record->xaxistitle = $xaxistitle;
+$record->yaxistitle = $yaxistitle;
+
+
+/*
 if($readonlymode === 'true'){
 $record->accesskey = (string)rand();
 }
 $record->groupmode = $groupmode;
-$DB->insert_record('filter_chart_sheet', $record, true);
+*/
+//Add to chart table
+$id = $DB->insert_record('filter_chart', $record, true);
+
+//add some blank data records
+$data = new stdClass();
+$data->chartid = $id;
+$data->x1 = '';
+$data->x2 = '';
+$data->x3 = '';
+$data->x4 = '';
+$data->x5 = '';
+$data->y1 = '';
+$data->y2 = '';
+$data->y3 = '';
+$data->y4 = '';
+$data->y5 = '';
+
+
+
+
+
+$DB->insert_record('filter_chart_data', $data, false);
 
 echo $id;
