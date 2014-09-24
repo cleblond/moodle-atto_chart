@@ -1,0 +1,8 @@
+{
+    "moodle-atto_chart-button": {
+        "requires": [
+            "moodle-editor_atto-plugin",
+            "datatype-date"
+        ]
+    }
+}
