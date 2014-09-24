@@ -54,7 +54,7 @@ $record->accesskey = (string)rand();
 $record->groupmode = $groupmode;
 */
 //Add to chart table
-$id = $DB->insert_record('filter_chart', $record, true);
+$id = $DB->insert_record('filter_chart_users', $record, true);
 
 //add some blank data records
 $data = new stdClass();
