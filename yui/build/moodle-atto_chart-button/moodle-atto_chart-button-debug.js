@@ -45,11 +45,14 @@ var TEMPLATE = '' +
     '<form class="atto_form">' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-left">' +
             '<label for="{{elementid}}_{{FLAVORCONTROL}}">{{get_string "enterflavor" component}}</label>' +
-            '<input type="radio" name="type" value="scatter" checked>Scatter' +
-            '<input type="radio" name="type" value="bar">Bar' +
-            '<input type="radio" name="type" value="pie">Pie<br/>' +
-            '<input type="radio" name="type" value="pie3D">Pie 3D<br/>' +
-            '<input type="radio" name="type" value="donut">Donut<br/>' +
+            '<input type="radio" name="type" value="scatter" checked>Scatter&nbsp;&nbsp;&nbsp;' +
+            '<input type="radio" name="type" value="line">Line&nbsp;&nbsp;&nbsp;' +
+            '<input type="radio" name="type" value="spline">Spline<hr>' +
+            '<input type="radio" name="type" value="bar">Bar&nbsp;&nbsp;&nbsp;' +
+            '<input type="radio" name="type" value="barH">Horz. Bar<hr>' +
+            '<input type="radio" name="type" value="pie">Pie&nbsp;&nbsp;&nbsp;' +
+            '<input type="radio" name="type" value="pie3D">Pie 3D&nbsp;&nbsp;&nbsp;' +
+            '<input type="radio" name="type" value="donut">Donut<br/><hr>' +
             '<label for="charttitle">Chart Title</label>' +
             '<input type="text" name="charttitle" id="charttitle" value=""><br/>' +
             '<label for="xaxistitle">x-axis title</label>' +
