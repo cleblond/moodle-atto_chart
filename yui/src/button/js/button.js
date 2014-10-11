@@ -45,9 +45,9 @@ var TEMPLATE = '' +
             '<label for="{{elementid}}_{{FLAVORCONTROL}}">{{get_string "enterflavor" component}}</label>' +
             '<input type="radio" name="type" value="scatter" checked>Scatter&nbsp;&nbsp;&nbsp;' +
             '<input type="radio" name="type" value="line">Line&nbsp;&nbsp;&nbsp;' +
-            '<input type="radio" name="type" value="spline">Spline<hr>' +
+            '<input type="radio" name="type" value="spline">Spline<br>' +
             '<input type="radio" name="type" value="bar">Bar&nbsp;&nbsp;&nbsp;' +
-            '<input type="radio" name="type" value="barH">Horz. Bar<hr>' +
+            '<input type="radio" name="type" value="barH">Horz. Bar<br>' +
             '<input type="radio" name="type" value="pie">Pie&nbsp;&nbsp;&nbsp;' +
             '<input type="radio" name="type" value="pie3D">Pie 3D&nbsp;&nbsp;&nbsp;' +
             '<input type="radio" name="type" value="donut">Donut<br/><hr>' +
@@ -56,10 +56,10 @@ var TEMPLATE = '' +
             '<label for="xaxistitle">x-axis title</label>' +
             '<input type="text" name="xaxistitle" id="xaxistitle" value=""><br/>' +
             '<label for="yaxistitle">y-axis title</label>' +
-            '<input type="text" name="yaxistitle" id="yaxistitle" value=""><br/><hr>' +
-            '<label for="readonly">Edit Permissions</label>' +
-            '<input type="checkbox" name="readonly" id="readonly" value="readonly" checked> Read-only<br/>' +
-            '<input type="checkbox" name="groupaccess" id="groupaccess" value="groupaccess"> Group access<br/><br/>' +
+            '<input type="text" name="yaxistitle" id="yaxistitle" value=""><hr>' +
+        //    '<label for="readonly">Edit Permissions</label>' +
+        //    '<input type="checkbox" name="readonly" id="readonly" value="readonly" checked> Read-only<br/>' +
+        //    '<input type="checkbox" name="groupaccess" id="groupaccess" value="groupaccess"> Group access<br/><br/>' +
             '<button class="{{CSS.INPUTSUBMIT}}">{{get_string "insert" component}}</button>' +
         '</div>' +
     '</form>';
@@ -171,21 +171,21 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
             focusAfterHide: null
         }).hide();
 
-        var uid = this.get('userid');
+        //var uid = this.get('userid');
         var charttitle = Y.one("#charttitle").get("value");
         var xaxistitle = Y.one("#xaxistitle").get("value");
         var yaxistitle = Y.one("#yaxistitle").get("value");
 
-        var readonly = Y.one("#readonly").get("checked");
+        //var readonly = Y.one("#readonly").get("checked");
         //var type = Y.one("#type").get("checked");
         var type = Y.one("input[name=type]:checked").get("value");
         var typeattrib = 'type="'+type+'"';
-        var groupattrib = 'group="false"';
-        var groupaccess = Y.one("#groupaccess").get("checked");
-        var groupmode = 0;
-        if(groupaccess === true){groupattrib = 'group="true"'; groupmode = 1;}
-        var readattrib = 'readonly="true"';
-        if(readonly === false){readattrib = 'readonly="false"';}
+        //var groupattrib = 'group="false"';
+        //var groupaccess = Y.one("#groupaccess").get("checked");
+        //var groupmode = 0;
+        //if(groupaccess === true){groupattrib = 'group="true"'; groupmode = 1;}
+        //var readattrib = 'readonly="true"';
+        //if(readonly === false){readattrib = 'readonly="false"';}
            
         //write key to db
             var xhr = new XMLHttpRequest();
@@ -197,8 +197,8 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
                     if (xhr.readyState === 4) {
                         var chartid = xhr.responseText;
                         obj.editor.focus();
-                        sheet = '<br><div class="eo_chart" chart="'+chartid+'" ' + typeattrib + ' ' + groupattrib + ' '+readattrib+' uid="'+uid+'"></div><br>';
-                        console.log(sheet);
+                        sheet = '<br><div class="eo_chart" chart="'+chartid+'" ' + typeattrib + '></div><br>';
+                        //console.log(sheet);
                         obj.get('host').insertContentAtFocusPoint(sheet);
                         obj.markUpdated();
                         if (xhr.status === 200) {
@@ -213,9 +213,9 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
                 };
             })(this);
 
-            var params = "?groupmode="+groupmode;
-            params += "&readonly="+readonly;
-            params += "&type="+type;
+            //var params = "?groupmode="+groupmode;
+            //params += "&readonly="+readonly;
+            var params = "?type="+type;
             params += "&title="+charttitle;
             params += "&xaxistitle="+xaxistitle;
             params += "&yaxistitle="+yaxistitle;

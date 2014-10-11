@@ -34,7 +34,7 @@ $title  = optional_param('title', 0, PARAM_TEXT);
 $xaxistitle = optional_param('xaxistitle', 0, PARAM_TEXT);
 $yaxistitle = optional_param('yaxistitle', 0, PARAM_TEXT);
 
-$readonlymode  = optional_param('readonly', 'true', PARAM_TEXT);
+//$readonlymode  = optional_param('readonly', 'true', PARAM_TEXT);
 
 //$id = time();
 
