@@ -215,7 +215,8 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
 
             //var params = "?groupmode="+groupmode;
             //params += "&readonly="+readonly;
-            var params = "?type="+type;
+            //console.log(type);
+            var params = "type="+type;
             params += "&title="+charttitle;
             params += "&xaxistitle="+xaxistitle;
             params += "&yaxistitle="+yaxistitle;

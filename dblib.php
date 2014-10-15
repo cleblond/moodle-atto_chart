@@ -29,10 +29,12 @@ if (!isset($CFG)) {
 global $CFG, $DB, $USER;
 require_once($CFG->libdir . '/filelib.php');
 
-$type  = optional_param('type', 0, PARAM_TEXT);
-$title  = optional_param('title', 0, PARAM_TEXT);
-$xaxistitle = optional_param('xaxistitle', 0, PARAM_TEXT);
-$yaxistitle = optional_param('yaxistitle', 0, PARAM_TEXT);
+//$type  = optional_param('type', 0, PARAM_TEXT);
+$type  = required_param('type', PARAM_TEXT);
+
+$title  = optional_param('title', '', PARAM_TEXT);
+$xaxistitle = optional_param('xaxistitle', '', PARAM_TEXT);
+$yaxistitle = optional_param('yaxistitle', '', PARAM_TEXT);
 
 //$readonlymode  = optional_param('readonly', 'true', PARAM_TEXT);
 
