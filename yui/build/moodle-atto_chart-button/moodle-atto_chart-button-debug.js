@@ -199,7 +199,7 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
                     if (xhr.readyState === 4) {
                         var chartid = xhr.responseText;
                         obj.editor.focus();
-                        sheet = '<br><div class="eo_chart" chart="'+chartid+'" ' + typeattrib + '></div><br>';
+                        sheet = '<br><div class="eo_chart ' + chartid + '"></div><br>';
                         //console.log(sheet);
                         obj.get('host').insertContentAtFocusPoint(sheet);
                         obj.markUpdated();
