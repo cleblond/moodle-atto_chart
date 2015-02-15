@@ -42,7 +42,7 @@ var CSS = {
 var TEMPLATE = '' +
     '<form class="atto_form">' +
         '<div id="{{elementid}}_{{innerform}}" class="mdl-left">' +
-            '<label for="{{elementid}}_{{FLAVORCONTROL}}">{{get_string "enterflavor" component}}</label>' +
+            '<label for="{{elementid}}_{{FLAVORCONTROL}}">{{get_string "charttype" component}}</label>' +
             '<input type="radio" name="type" value="scatter" checked>Scatter&nbsp;&nbsp;&nbsp;' +
             '<input type="radio" name="type" value="line">Line&nbsp;&nbsp;&nbsp;' +
             '<input type="radio" name="type" value="spline">Spline<br>' +
@@ -63,6 +63,11 @@ var TEMPLATE = '' +
             '<button class="{{CSS.INPUTSUBMIT}}">{{get_string "insert" component}}</button>' +
         '</div>' +
     '</form>';
+
+
+var CHART = '<iframe src="http://desktop/moodle28/lib/editor/atto/plugins/chart/view.php?chartid={{chartid}}"' +
+                  'width="760" height="690" scrolling="no" frameBorder="0" ></iframe>';
+
 
 Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.EditorPlugin, [], {
 
@@ -87,7 +92,7 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
                 callbackArgs: 'chart'
             });
         
-
+        this.editor.delegate('dblclick', this._displayChart, '.eo_chart', this);
     },
 
     /**
@@ -99,6 +104,67 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
      */
     _getFlavorControlName: function(){
         return(this.get('host').get('elementid') + '_' + FLAVORCONTROL);
+    },
+
+
+
+
+    /**
+     * Display the Chart.
+     *
+     * @method _displayDialogue
+     * @private
+     */
+    _displayChart: function(e) {
+        // Store the current selection.
+        var div = e.target;
+        //console.log(div);
+        //check if actually chart_div
+        var classes = div.get('className');
+        var chartids = classes.split(" ");
+        //console.log(sheetids[1]);
+
+        this._currentSelection = this.get('host').getSelection();
+        if (this._currentSelection === false) {
+            return;
+        }
+        //console.log(this._currentSelection);
+        // Reset the image dimensions.
+        //this._rawImageDimensions = null;
+
+        var viewdialogue = this.getDialogue({
+            //headerContent: M.util.get_string('viewspreadsheet', COMPONENTNAME),
+            width: 'auto',
+            focusAfterHide: true
+        });
+
+        // Set the dialogue content, and then show the dialogue.
+        viewdialogue.setStdModContent(Y.WidgetStdMod.HEADER, M.util.get_string('viewchart', COMPONENTNAME));
+        viewdialogue.set('bodyContent', this._getChartContent(chartids[1]))
+                .show();
+    },
+
+    /**
+     * Return the dialogue content for the tool, attaching any required
+     * events.
+     *
+     * @method _getDialogueContent
+     * @return {Node} The content to place in the dialogue.
+     * @private
+     */
+    _getChartContent: function(chart) {
+        //console.log(sheet);
+        var template = Y.Handlebars.compile(CHART),
+            content = Y.Node.create(template({
+                elementid: this.get('host').get('elementid'),
+                CSS: CSS,
+                chartid: chart,
+                component: COMPONENTNAME
+            }));
+
+        this._form = content;
+
+        return content;
     },
 
      /**
@@ -179,7 +245,7 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
         //var readonly = Y.one("#readonly").get("checked");
         //var type = Y.one("#type").get("checked");
         var type = Y.one("input[name=type]:checked").get("value");
-        var typeattrib = 'type="'+type+'"';
+        //var typeattrib = 'type="'+type+'"';
         //var groupattrib = 'group="false"';
         //var groupaccess = Y.one("#groupaccess").get("checked");
         //var groupmode = 0;

@@ -34,8 +34,9 @@ function atto_chart_strings_for_js() {
 
     $PAGE->requires->strings_for_js(array('insert',
                                           'cancel',
-                                          'enterflavor',
-                                          'dialogtitle'),
+                                          'charttype',
+                                          'dialogtitle',
+                                          'viewchart'),
                                     'atto_chart');
 }
 
