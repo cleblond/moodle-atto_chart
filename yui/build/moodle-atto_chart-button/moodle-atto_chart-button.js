@@ -67,7 +67,7 @@ var TEMPLATE = '' +
     '</form>';
 
 
-var CHART = '<iframe src="http://desktop/moodle28/lib/editor/atto/plugins/chart/view.php?chartid={{chartid}}"' +
+var CHART = '<iframe src="{{wwwroot}}/lib/editor/atto/plugins/chart/view.php?chartid={{chartid}}"' +
                   'width="760" height="690" scrolling="no" frameBorder="0" ></iframe>';
 
 
@@ -161,6 +161,7 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
                 elementid: this.get('host').get('elementid'),
                 CSS: CSS,
                 chartid: chart,
+                wwwroot: M.cfg.wwwroot,
                 component: COMPONENTNAME
             }));
 
