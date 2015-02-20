@@ -188,9 +188,9 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
         });
         //dialog doesn't detect changes in width without this
         //if you reuse the dialog, this seems necessary
-        if(dialogue.width !== width + 'px'){
+     /*   if(dialogue.width !== width + 'px'){
             dialogue.set('width',width+'px');
-        }
+        }  */
 
         //append buttons to iframe
         var buttonform = this._getFormContent(clickedicon, date1);
