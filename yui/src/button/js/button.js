@@ -176,12 +176,10 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
      */
     _displayDialogue: function(e, clickedicon, date1) {
         e.preventDefault();
-        var width=300;
-
 
         var dialogue = this.getDialogue({
             headerContent: M.util.get_string('dialogtitle', COMPONENTNAME),
-            width: width + 'px',
+            width: 'auto',
             focusAfterHide: clickedicon
         });
         //dialog doesn't detect changes in width without this
@@ -197,6 +195,7 @@ Y.namespace('M.atto_chart').Button = Y.Base.create('button', Y.M.editor_atto.Edi
         bodycontent.append(buttonform);
 
         //set to bodycontent
+        dialogue.setStdModContent(Y.WidgetStdMod.HEADER, M.util.get_string('dialogtitle', COMPONENTNAME));
         dialogue.set('bodyContent', bodycontent);
         dialogue.show();
         this.markUpdated();

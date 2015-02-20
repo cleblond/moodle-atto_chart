@@ -23,8 +23,8 @@
  */
 
 $string['createchart'] = 'Create chart';
-$string['pluginname'] = 'chart';
-$string['settings'] = 'chart (Atto)';
+$string['pluginname'] = 'Chart';
+$string['settings'] = 'Chart (Atto)';
 $string['browse'] = 'Browse';
 $string['chart:visible'] = 'Visible';
 $string['nothingtoinsert'] = 'Nothing to insert!';
